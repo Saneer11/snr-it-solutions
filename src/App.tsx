@@ -1,7 +1,7 @@
-import Home from "./pages/Home";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 function App() {
-  return <Home />;
+  return <AdminDashboard />;
 }
 
 export default App;

@@ -12,7 +12,7 @@ export async function uploadAttachment(file: File) {
   }
 
   return {
-    fileName: file.name,
-    filePath: data.path,
+    attachmentName: file.name,
+    attachmentPath: data.path,
   };
 }

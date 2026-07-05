@@ -4,6 +4,7 @@ import Button from "../Common/Button";
 import SectionTitle from "../Common/SectionTitle";
 import { createTicket } from "../../services/ticketService";
 import { useState } from "react";
+import { uploadAttachment } from "../../services/storageService";
 
 export default function TicketForm() {
   const {
@@ -18,6 +19,13 @@ const [loading, setLoading] = useState(false);
   const onSubmit = async (data: TicketFormData) => {
   try {
     setLoading(true);
+
+    if (data.attachments?.length) {
+      const upload = await uploadAttachment(data.attachments[0]);
+
+      data.attachmentName = upload.attachmentName;
+      data.attachmentPath = upload.attachmentPath;
+    }
 
     const ticket = await createTicket(data);
 
